@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarHireForm1", "CarHireForm1\CarHireForm1.csproj", "{95E20784-DB80-4F46-B889-5CB7CF666B87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95E20784-DB80-4F46-B889-5CB7CF666B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E20784-DB80-4F46-B889-5CB7CF666B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E20784-DB80-4F46-B889-5CB7CF666B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E20784-DB80-4F46-B889-5CB7CF666B87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C300EA05-438D-43C9-94B5-E876CDAEF3C4}
+	EndGlobalSection
+EndGlobal
