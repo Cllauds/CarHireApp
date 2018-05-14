@@ -61,6 +61,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.btn_checkAvailable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_custView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vehicleView)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +90,7 @@
             // 
             // txt_dailyRate
             // 
-            this.txt_dailyRate.Location = new System.Drawing.Point(99, 400);
+            this.txt_dailyRate.Location = new System.Drawing.Point(451, 398);
             this.txt_dailyRate.Name = "txt_dailyRate";
             this.txt_dailyRate.ReadOnly = true;
             this.txt_dailyRate.Size = new System.Drawing.Size(100, 20);
@@ -97,7 +98,7 @@
             // 
             // txt_customerNo
             // 
-            this.txt_customerNo.Location = new System.Drawing.Point(99, 281);
+            this.txt_customerNo.Location = new System.Drawing.Point(451, 279);
             this.txt_customerNo.Name = "txt_customerNo";
             this.txt_customerNo.ReadOnly = true;
             this.txt_customerNo.Size = new System.Drawing.Size(100, 20);
@@ -105,14 +106,14 @@
             // 
             // txt_employeeID
             // 
-            this.txt_employeeID.Location = new System.Drawing.Point(99, 322);
+            this.txt_employeeID.Location = new System.Drawing.Point(451, 320);
             this.txt_employeeID.Name = "txt_employeeID";
             this.txt_employeeID.Size = new System.Drawing.Size(100, 20);
             this.txt_employeeID.TabIndex = 4;
             // 
             // txt_vinNo
             // 
-            this.txt_vinNo.Location = new System.Drawing.Point(99, 362);
+            this.txt_vinNo.Location = new System.Drawing.Point(451, 360);
             this.txt_vinNo.Name = "txt_vinNo";
             this.txt_vinNo.ReadOnly = true;
             this.txt_vinNo.Size = new System.Drawing.Size(200, 20);
@@ -128,14 +129,14 @@
             // 
             // txt_pickupTime
             // 
-            this.txt_pickupTime.Location = new System.Drawing.Point(414, 320);
+            this.txt_pickupTime.Location = new System.Drawing.Point(100, 320);
             this.txt_pickupTime.Name = "txt_pickupTime";
             this.txt_pickupTime.Size = new System.Drawing.Size(100, 20);
             this.txt_pickupTime.TabIndex = 7;
             // 
             // txt_returnTime
             // 
-            this.txt_returnTime.Location = new System.Drawing.Point(414, 401);
+            this.txt_returnTime.Location = new System.Drawing.Point(100, 401);
             this.txt_returnTime.Name = "txt_returnTime";
             this.txt_returnTime.Size = new System.Drawing.Size(100, 20);
             this.txt_returnTime.TabIndex = 8;
@@ -159,7 +160,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 404);
+            this.label1.Location = new System.Drawing.Point(377, 402);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 11;
@@ -168,7 +169,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 284);
+            this.label2.Location = new System.Drawing.Point(377, 282);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 12;
@@ -177,7 +178,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 325);
+            this.label3.Location = new System.Drawing.Point(377, 323);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 13;
@@ -186,7 +187,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 365);
+            this.label4.Location = new System.Drawing.Point(377, 363);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 14;
@@ -195,7 +196,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(337, 323);
+            this.label5.Location = new System.Drawing.Point(23, 323);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 15;
@@ -204,7 +205,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(337, 404);
+            this.label6.Location = new System.Drawing.Point(23, 404);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 16;
@@ -241,26 +242,28 @@
             // 
             this.dtp_pickupDate.CustomFormat = "yyyy-MM-dd";
             this.dtp_pickupDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_pickupDate.Location = new System.Drawing.Point(414, 281);
+            this.dtp_pickupDate.Location = new System.Drawing.Point(100, 281);
             this.dtp_pickupDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtp_pickupDate.Name = "dtp_pickupDate";
             this.dtp_pickupDate.Size = new System.Drawing.Size(200, 20);
             this.dtp_pickupDate.TabIndex = 20;
+            this.dtp_pickupDate.ValueChanged += new System.EventHandler(this.dtp_pickupDate_ValueChanged);
             // 
             // dtp_returnDate
             // 
             this.dtp_returnDate.CustomFormat = "yyyy-MM-dd";
             this.dtp_returnDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_returnDate.Location = new System.Drawing.Point(414, 361);
+            this.dtp_returnDate.Location = new System.Drawing.Point(100, 361);
             this.dtp_returnDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtp_returnDate.Name = "dtp_returnDate";
             this.dtp_returnDate.Size = new System.Drawing.Size(200, 20);
             this.dtp_returnDate.TabIndex = 21;
+            this.dtp_returnDate.ValueChanged += new System.EventHandler(this.dtp_returnDate_ValueChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(337, 284);
+            this.label10.Location = new System.Drawing.Point(23, 284);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(71, 13);
             this.label10.TabIndex = 22;
@@ -269,7 +272,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(337, 364);
+            this.label11.Location = new System.Drawing.Point(23, 364);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 13);
             this.label11.TabIndex = 23;
@@ -342,7 +345,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(520, 323);
+            this.label15.Location = new System.Drawing.Point(206, 323);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 13);
             this.label15.TabIndex = 31;
@@ -351,17 +354,28 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(520, 405);
+            this.label16.Location = new System.Drawing.Point(206, 405);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 13);
             this.label16.TabIndex = 32;
             this.label16.Text = "Eg. 9:00/21:00";
+            // 
+            // btn_checkAvailable
+            // 
+            this.btn_checkAvailable.Location = new System.Drawing.Point(567, 393);
+            this.btn_checkAvailable.Name = "btn_checkAvailable";
+            this.btn_checkAvailable.Size = new System.Drawing.Size(100, 36);
+            this.btn_checkAvailable.TabIndex = 33;
+            this.btn_checkAvailable.Text = "Check\r\nAvailability:";
+            this.btn_checkAvailable.UseVisualStyleBackColor = true;
+            this.btn_checkAvailable.Click += new System.EventHandler(this.btn_checkAvailable_Click);
             // 
             // CreateBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 521);
+            this.Controls.Add(this.btn_checkAvailable);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
@@ -440,5 +454,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btn_checkAvailable;
     }
 }

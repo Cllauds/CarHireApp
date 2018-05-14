@@ -13,6 +13,7 @@ namespace CarHireForm1
 {
     public partial class CreateBooking : Form
     {
+        string str_Connection = ConnectionVariables.str_connectionValue1;
         public decimal dailyRate;
         DateTime todaysDate = DateTime.Today;
 
@@ -27,7 +28,7 @@ namespace CarHireForm1
 
             dgv_vehicleView.DataSource = GetVehicleBookingData();
 
-            string str_Connection = ConnectionVariables.str_connectionValue1;
+            
 
             string str_custSelectStmnt = "select * " +
                                     "from dbo.Customers; ";
@@ -55,6 +56,8 @@ namespace CarHireForm1
 
             getCustData();
             getVehData();
+
+            HideAll(true);
         }
 
         private void dgv_custView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -166,6 +169,76 @@ namespace CarHireForm1
             }
         }
 
+        public void CheckAvailability()
+        {
+            string datePU;
+            string dateRET;            
+
+            datePU = dtp_pickupDate.Value.ToString();
+            int spaceIndex = datePU.IndexOf(" ");
+            datePU = datePU.Substring(0, spaceIndex);
+
+            dateRET = dtp_returnDate.Value.ToString();
+            int spaceIndex2 = dateRET.IndexOf(" ");
+            dateRET = dateRET.Substring(0, spaceIndex2);
+
+            string str_dateSearch = "select * " +
+                                    "from dbo.Bookings " +
+                                    "where vin = '" + txt_vinNo.Text + "' AND " +
+                                    "(pickupDate between convert(date, '" + datePU + "', 103) and convert(date, '" + dateRET + "', 103)) or" +
+                                    "(returnDate between convert(date, '" + datePU + "', 103) and convert(date, '" + dateRET + "', 103))";
+
+            SqlDataAdapter custAdapter = new SqlDataAdapter(str_dateSearch, str_Connection);
+            DataSet cust_DS = new DataSet();
+            custAdapter.Fill(cust_DS);
+
+            dgv_custView.ReadOnly = true;
+            dgv_custView.DataSource = cust_DS.Tables[0];
+
+            dgv_custView.Select();
+
+            if (cust_DS.Tables[0].Rows.Count >= 1)
+            {
+                MessageBox.Show("------------------------------------------------------------------------------------\n" +
+                            " There is a conflict with the selected dates and a current booking.\n" +
+                            "------------------------------------------------------------------------------------");
+            }
+
+
+            if (cust_DS.Tables[0].Rows.Count == 0)
+            {
+                HideAll(false);
+                loadCustData();
+            }
+
+            
+        }
+
+        public void HideAll(bool value)
+        {
+            txt_obsvOutbound.Visible = !value;
+            txt_obsvInbound.Visible = !value;
+            label7.Visible = !value;
+            label8.Visible = !value;
+            label1.Visible = !value;
+            label2.Visible = !value;
+            label3.Visible = !value;
+            label4.Visible = !value;
+            label9.Visible = !value;
+            label12.Visible = !value;
+            btn_calcCost.Visible = !value;
+            btn_submitBooking.Visible = !value;
+            txt_customerNo.Visible = !value;
+            txt_employeeID.Visible = !value;
+            txt_vinNo.Visible = !value;
+            txt_dailyRate.Visible = !value;
+            txt_odoOutBound.Visible = !value;
+            txt_totalCost.Visible = !value;
+            label14.Visible = !value;
+
+            btn_checkAvailable.Visible = value;
+        }
+
         private DataTable GetCustomerBookingData()
         {
             DataTable dt_CBookings = new DataTable();
@@ -178,6 +251,36 @@ namespace CarHireForm1
             DataTable dt_VBookings = new DataTable();
 
             return dt_VBookings;
+        }
+
+        private void btn_checkAvailable_Click(object sender, EventArgs e)
+        {
+            CheckAvailability();
+        }
+
+        private void dtp_pickupDate_ValueChanged(object sender, EventArgs e)
+        {
+            HideAll(true);
+        }
+
+        private void dtp_returnDate_ValueChanged(object sender, EventArgs e)
+        {
+            HideAll(true);
+        }
+
+        void loadCustData()
+        {
+            string str_custSelectStmnt = "select * " +
+                                    "from dbo.Customers; ";
+
+            SqlDataAdapter custAdapter = new SqlDataAdapter(str_custSelectStmnt, str_Connection);
+            DataSet cust_DS = new DataSet();
+            custAdapter.Fill(cust_DS);
+
+            dgv_custView.ReadOnly = true;
+            dgv_custView.DataSource = cust_DS.Tables[0];
+
+            dgv_custView.Select();
         }
     }
 }

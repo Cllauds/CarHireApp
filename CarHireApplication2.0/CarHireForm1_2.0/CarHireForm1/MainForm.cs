@@ -261,9 +261,9 @@ namespace CarHireForm1
 
     public class ConnectionVariables
     {
-        //public static string str_connectionValue1 = "Data Source = PaperWeight; Initial Catalog = CarRental; Integrated Security = True";
-        public static string str_connectionValue1 = "Data Source = MSSQL003; Initial Catalog = CarRental; Integrated Security = True";
-        //public static string str_connectionValue1 = "Data Source = DESKTOP-VTQBBEA; Initial Catalog = CarRental; Integrated Security = True";
+        public static string str_connectionValue1 = "Data Source = PaperWeight; Initial Catalog = CarRental; Integrated Security = True";
+        //public static string str_connectionValue1 = "Data Source = MSSQL003; Initial Catalog = CarRental; Integrated Security = True";
+        //public static string str_connectionValue1 = "Data Source = DESKTOP-53JUJGO; Initial Catalog = CarRental; Integrated Security = True";
     }
 }
 
